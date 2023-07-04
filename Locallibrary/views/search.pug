@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p Search results for: #[em #{searchTerm}]
+
+  if results.books.length > 0
+    h2 Books
+    ul
+      each book in results.books
+        li
+          a(href="/catalog/book/#{book.id}")= book.title
+  else
+    p No books found.
+
+  if results.authors.length > 0
+    h2 Authors
+    ul
+      each author in results.authors
+        li
+          a(href="/catalog/author/#{author.id}")= author.name
+  else
+    p No authors found.
+
+  if results.genres.length > 0
+    h2 genres
+    ul
+      each genre in results.genres
+        li
+          a(href="/catalog/genre/#{genre.id}")= genre.name
+  else
+    p No genres found.  
+
